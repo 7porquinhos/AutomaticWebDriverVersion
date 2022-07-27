@@ -1,19 +1,14 @@
-﻿using AutomaticWebDriver.WebScrapping;
+﻿using AutomaticWebDriver.Util.FilesUtil;
+using AutomaticWebDriver.WebScrapping;
 using HtmlAgilityPack;
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutomaticWebDriver
 {
     public static class ChromeDriver
     {
-
         /// <summary>
         /// Check the version of google chrome installed on the machine.
         /// </summary>
@@ -77,6 +72,9 @@ namespace AutomaticWebDriver
             if (File.Exists(DestinationPath))
                 throw new Exception("Invalid directory.");
 
+            if (File.Exists($"{DestinationPath}/chromedriver.exe"))
+                throw new Exception("chromedriver.exe already exists in the target directory.");
+
             try
             {
                 HTML = client.CarregarHtml(URLHtml);
@@ -98,52 +96,13 @@ namespace AutomaticWebDriver
                     File.WriteAllBytes($"{DestinationPath}/chromedriver_win32.zip", response);
 
                 if (File.Exists($"{DestinationPath}/chromedriver_win32.zip"))
-                    return true;
-                else
-                    return false;
+                    FilesUtil.ExtractFileZip($"{DestinationPath}/chromedriver_win32.zip", DestinationPath);
+                
+                return true;
             }
             catch (Exception ex)
             {
                 throw new Exception("Unable to download chrome drive.", ex);
-            }
-        }
-        private static void Update()
-        {
-            try
-            {
-                object path = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe", "", null);
-                String chromeVersion = "",
-                    from = "",
-                    to = Directory.GetCurrentDirectory() + "\\chromedriver.exe",
-                    driversPath = "PathChromeDrive",
-                    driverFolder = "";
-
-                if (path != null)
-                    chromeVersion = FileVersionInfo.GetVersionInfo(path.ToString()).FileVersion.Substring(0, 2);
-                else
-                    return;
-
-                var dir = Directory.GetDirectories(driversPath);
-                foreach (var item in dir)
-                {
-                    int inicialVersion = Convert.ToInt32(item.Replace(driversPath, "").Substring(2, 2));
-                    int lastVersion = Convert.ToInt32(item.Replace(driversPath, "").Substring(5, 2));
-
-                    if (inicialVersion <= Convert.ToInt32(chromeVersion) && lastVersion >= Convert.ToInt32(chromeVersion))
-                    {
-                        driverFolder = item;
-                    }
-                }
-                if (driverFolder == "")
-                    return;
-
-                from = driverFolder + "\\chromedriver.exe";
-
-                File.Copy(from, to, true);
-            }
-            catch (Exception ex)
-            {
-
             }
         }
     }
