@@ -17,6 +17,10 @@ namespace AutomaticWebDriver
         /// <exception cref="Exception"></exception>
         public static string GetVersion()
         {
+            return GetVersionGoogleChrome();
+        }
+        private static string GetVersionGoogleChrome()
+        {
             #region Variables
             object path;
             string chromeVersion = "";
@@ -48,6 +52,10 @@ namespace AutomaticWebDriver
         /// <exception cref="Exception"></exception>
         public static bool Download(string DestinationPath)
         {
+            return DownloadChromeDrive(DestinationPath);
+        }
+        private static bool DownloadChromeDrive(string DestinationPath)
+        {
             #region Variables
             string VersionToDownload = "";
             string HTML = "";
@@ -61,7 +69,7 @@ namespace AutomaticWebDriver
             #endregion
 
             #region Assigning values
-            versionChrome = GetVersion().Substring(0, 3);
+            versionChrome = GetVersionGoogleChrome().Substring(0, 3);
             URLHtml = "https://chromedriver.chromium.org/downloads";
             URLDownload = "https://chromedriver.storage.googleapis.com";
             #endregion
@@ -97,7 +105,7 @@ namespace AutomaticWebDriver
 
                 if (File.Exists($"{DestinationPath}/chromedriver_win32.zip"))
                     FilesUtil.ExtractFileZip($"{DestinationPath}/chromedriver_win32.zip", DestinationPath);
-                
+
                 return true;
             }
             catch (Exception ex)

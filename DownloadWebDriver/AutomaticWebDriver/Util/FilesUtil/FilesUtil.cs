@@ -9,6 +9,13 @@ namespace AutomaticWebDriver.Util.FilesUtil
 {
     public static class FilesUtil
     {
+        /// <summary>
+        /// Extract the content into a packaged file.
+        /// </summary>
+        /// <param name="OriginPathZip">File source path.</param>
+        /// <param name="DestinationPath">file destination path</param>
+        /// <returns>True extract success, false.</returns>
+        /// <exception cref="Exception"></exception>
         public static bool ExtractFileZip(string OriginPathZip, string DestinationPath)
         {
             try
