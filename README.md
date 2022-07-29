@@ -1,12 +1,38 @@
+![Logo](https://raw.githubusercontent.com/7porquinhos/AutomaticWebDriverVersion/main/DownloadWebDriver/AutomaticWebDriver/DownloadChromeDrive2.png)
 
 # AutomaticChromeDriveDownload
+AutomaticChromeDriveDownload is a Csharp library chromedrive extension auto-download.
 
-Dll que auxilia na execução do [Selenium](https://www.selenium.dev/) realizando o download automatico do webdrive do google chrome para seu projeto.
+## Installation
 
+Use the package manager [Package Manager](https://www.nuget.org/packages/AutomaticChromeDriveDownload) to install AutomaticChromeDriveDownload.
 
-## Funcionalidades
+```bash
+PM > Install-Package AutomaticChromeDriveDownload -Version 1.0.6
+```
 
-- ChromeDrive.GetVersion() - Pega a versão expecifica do seu navegador google chrome.
-- ChromeDrive.Download(Directory.GetCurrentDirectory()) - Realiza o download da versão do chromedrive especico para executar o selenium com o google chrome.
+## Usage
 
+```csharp
+using AutomaticWebDriver;
 
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Return string: with browser google chrome version.
+            Console.WriteLine(ChromeDriver.GetVersion());
+            //Return bool: true to download chromedrive success ou false to error.
+            Console.WriteLine(ChromeDriver.Download(Directory.GetCurrentDirectory()));
+        }
+    }
+}
+
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
