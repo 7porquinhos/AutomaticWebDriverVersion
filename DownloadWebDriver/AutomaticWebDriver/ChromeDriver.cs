@@ -33,7 +33,6 @@ namespace AutomaticWebDriver
                     throw new Exception("Invalid directory, HKEY_LOCAL_MACHINE.");
 
                 chromeVersion = FileVersionInfo.GetVersionInfo(path.ToString()).FileVersion;
-
                 if (chromeVersion is null)
                     throw new Exception("Could not identify google chrome browser version.");
 
@@ -56,6 +55,13 @@ namespace AutomaticWebDriver
         }
         private static bool DownloadChromeDrive(string DestinationPath)
         {
+            if (DestinationPath is null)
+                throw new Exception("Destination path cannot be null.", new ArgumentNullException());
+            if (File.Exists($"{DestinationPath}/chromedriver.exe"))
+                throw new Exception($"chromedriver.exe already exists in the directory {DestinationPath}");
+            if (!Directory.Exists(DestinationPath))
+                throw new Exception("Directory does not exist.", new DirectoryNotFoundException());
+
             #region Variables
             string VersionToDownload = "";
             string HTML = "";
@@ -76,9 +82,6 @@ namespace AutomaticWebDriver
 
             if (!versionChrome.Any())
                 throw new Exception("Unidentified chrome drive version.");
-
-            if (File.Exists(DestinationPath))
-                throw new Exception("Invalid directory.");
 
             if (File.Exists($"{DestinationPath}/chromedriver.exe"))
                 throw new Exception("chromedriver.exe already exists in the target directory.");

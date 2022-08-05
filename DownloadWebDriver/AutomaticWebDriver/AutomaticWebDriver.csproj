@@ -12,20 +12,20 @@
     <RepositoryUrl>https://github.com/7porquinhos/AutomaticWebDriverVersion</RepositoryUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <AssemblyVersion></AssemblyVersion>
-    <VersionPrefix>1.0.6</VersionPrefix>
+    <VersionPrefix>1.0.7</VersionPrefix>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\DownloadChromeDrive2.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
+    <None Update="DownloadChromeDrive2.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
