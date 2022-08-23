@@ -15,7 +15,7 @@ namespace AutomaticWebDriver
         /// <param></param>
         /// <returns>String containing the google chrome browser version.</returns>
         /// <exception cref="Exception"></exception>
-        public static string GetVersion()
+        public static string Version()
         {
             return GetVersionGoogleChrome();
         }
@@ -43,11 +43,12 @@ namespace AutomaticWebDriver
                 throw new Exception("Chrome version not found, check if it was installed on the machine.", ex);
             }
         }
+
         /// <summary>
-        /// Download specific chrome drive for using local browser with selenium.
+        /// Download, specific chrome drive for using local browser with selenium.
         /// </summary>
-        /// <param name="DestinationPath">Caminho onde ira salvar o chromedrive.exe.</param>
-        /// <returns>True download completed, false.</returns>
+        /// <param name="DestinationPath">Path where to save chromedrive.exe</param>
+        /// <returns>True, if download completed, false.</returns>
         /// <exception cref="Exception"></exception>
         public static bool Download(string DestinationPath)
         {
@@ -56,9 +57,7 @@ namespace AutomaticWebDriver
         private static bool DownloadChromeDrive(string DestinationPath)
         {
             if (DestinationPath is null)
-                throw new Exception("Destination path cannot be null.", new ArgumentNullException());
-            if (File.Exists($"{DestinationPath}/chromedriver.exe"))
-                throw new Exception($"chromedriver.exe already exists in the directory {DestinationPath}");
+                throw new Exception("Parameter Destination path cannot be null.", new ArgumentNullException());
             if (!Directory.Exists(DestinationPath))
                 throw new Exception("Directory does not exist.", new DirectoryNotFoundException());
 
@@ -84,7 +83,10 @@ namespace AutomaticWebDriver
                 throw new Exception("Unidentified chrome drive version.");
 
             if (File.Exists($"{DestinationPath}/chromedriver.exe"))
-                throw new Exception("chromedriver.exe already exists in the target directory.");
+            {
+                //throw new Exception("chromedriver.exe already exists in the target directory.");
+                return false;
+            }
 
             try
             {
@@ -115,6 +117,43 @@ namespace AutomaticWebDriver
             {
                 throw new Exception("Unable to download chrome drive.", ex);
             }
+        }
+
+        /// <summary>
+        /// Exists, check if there is already a chrome drive on the destination.
+        /// </summary>
+        /// <param name="OriginPath">Path where to check if chromedrive.exe already exists</param>
+        /// <returns>True, if chromedrive.exe already exists, false.</returns>
+        /// <exception cref="Exception"></exception>
+        public static bool Exists(string OriginPath)
+        {
+            if (OriginPath is null)
+                throw new Exception("Parameter Destination path cannot be null.", new ArgumentNullException());
+            if (!Directory.Exists(OriginPath))
+                throw new Exception("Directory does not exist.", new DirectoryNotFoundException());
+
+            return File.Exists($"{OriginPath}\\chromedriver.exe");
+        }
+
+        /// <summary>
+        /// Overwrite, check if there is already a chrome drive on the destination and Overwrite.
+        /// </summary>
+        /// <param name="OriginPath">Path where to check if chromedrive.exe already exists</param>
+        /// <returns>True, if chromedrive.exe already exists, false.</returns>
+        /// <exception cref="Exception"></exception>
+        public static bool Overwrite(string OriginPath)
+        {
+            return OverwriteChromeDrive(OriginPath);
+        }
+        private static bool OverwriteChromeDrive(string OriginPath)
+        {
+            if (Exists(OriginPath))
+            {
+                File.Delete($"{OriginPath}chromedriver.exe");
+                return DownloadChromeDrive(OriginPath);
+            }
+            else
+                return false;
         }
     }
 }

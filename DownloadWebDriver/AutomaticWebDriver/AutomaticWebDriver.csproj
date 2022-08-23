@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -12,9 +13,10 @@
     <RepositoryUrl>https://github.com/7porquinhos/AutomaticWebDriverVersion</RepositoryUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <AssemblyVersion></AssemblyVersion>
-    <VersionPrefix>1.0.7</VersionPrefix>
+    <VersionPrefix>1.0.8</VersionPrefix>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +25,10 @@
 
   <ItemGroup>
     <None Update="DownloadChromeDrive2.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

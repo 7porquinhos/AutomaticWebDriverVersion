@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomaticWebDriver", "AutomaticWebDriver\AutomaticWebDriver.csproj", "{464F78E4-3FEB-4963-BB9B-BCC52B935877}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticWebDriverTests", "AutomaticWebDriverTests\AutomaticWebDriverTests.csproj", "{A9DA55F6-9115-49A2-B6F7-E0BC10BBCACF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{464F78E4-3FEB-4963-BB9B-BCC52B935877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{464F78E4-3FEB-4963-BB9B-BCC52B935877}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{464F78E4-3FEB-4963-BB9B-BCC52B935877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9DA55F6-9115-49A2-B6F7-E0BC10BBCACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9DA55F6-9115-49A2-B6F7-E0BC10BBCACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9DA55F6-9115-49A2-B6F7-E0BC10BBCACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9DA55F6-9115-49A2-B6F7-E0BC10BBCACF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
