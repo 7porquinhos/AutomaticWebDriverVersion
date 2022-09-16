@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace AutomaticWebDriver.Tests
 {
@@ -23,7 +24,7 @@ namespace AutomaticWebDriver.Tests
         public void VersionTestFalse()
         {
             string version = ChromeDriver.Version();
-                Assert.IsNotNull(version);
+            Assert.IsNotNull(version);
         }
 
         [TestMethod()]
@@ -37,7 +38,7 @@ namespace AutomaticWebDriver.Tests
         [TestMethod()]
         public void DownloadTestIsFalse()
         {
-                Assert.IsFalse(ChromeDriver.Download(path));
+            Assert.IsFalse(ChromeDriver.Download(path));
         }
 
         [TestMethod()]
@@ -72,6 +73,13 @@ namespace AutomaticWebDriver.Tests
             if (File.Exists(pathChromeDrive))
                 File.Delete(pathChromeDrive);
             Assert.IsFalse(ChromeDriver.Overwrite(path));
+        }
+
+        [TestMethod()]
+        public void KillTest()
+        {
+            //Process process = Process.Start(@"chromedriver.exe");
+            Assert.IsTrue(ChromeDriver.Kill());
         }
     }
 }

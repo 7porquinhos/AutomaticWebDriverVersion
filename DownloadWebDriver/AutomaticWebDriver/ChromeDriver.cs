@@ -155,5 +155,33 @@ namespace AutomaticWebDriver
             else
                 return false;
         }
+
+        /// <summary>
+        /// Kill, chromedrive.exe active in process.
+        /// </summary>
+        /// <returns>True, if kill chromedrive, false.</returns>
+        /// <exception cref="Exception"></exception>
+        public static bool Kill()
+        {
+            return ProcessKill();
+        }
+        private static bool ProcessKill()
+        {
+            try
+            {
+                int count = 0;
+                foreach (var process in Process.GetProcessesByName("chromedriver"))
+                {
+                    process.Kill();
+                }
+                count = Process.GetProcessesByName("chromedriver").Length;
+                return count == 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error, Method Kill in class ChromeDrive.", ex);
+            }
+            
+        }
     }
 }

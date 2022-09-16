@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/7porquinhos/AutomaticWebDriverVersion</RepositoryUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <AssemblyVersion></AssemblyVersion>
-    <VersionPrefix>1.0.8</VersionPrefix>
+    <VersionPrefix>1.0.9</VersionPrefix>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
     <PackageReadmeFile>README.md</PackageReadmeFile>

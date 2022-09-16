@@ -8,7 +8,7 @@ AutomaticChromeDriveDownload is a Csharp library chromedrive extension auto-down
 Use the package manager [Package Manager](https://www.nuget.org/packages/AutomaticChromeDriveDownload) to install AutomaticChromeDriveDownload.
 
 ```bash
-PM > Install-Package AutomaticChromeDriveDownload -Version 1.0.8
+PM > Install-Package AutomaticChromeDriveDownload -Version 1.0.9
 ```
 
 ## Usage
@@ -33,6 +33,9 @@ namespace ConsoleApp
 
             //Return bool: true if exist chromedrive in directory to Overwrite.
             Console.WriteLine(ChromeDriver.Overwrite(Directory.GetCurrentDirectory()));
+
+            //Return bool: true if kill chromedrive in process.
+            Console.WriteLine(ChromeDriver.Close());
         }
     }
 }
